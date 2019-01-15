@@ -39,6 +39,10 @@ chown -R root:root $ramdisk/*;
 dump_boot;
 # begin ramdisk changes
 remove_section init.rc "service flash_recovery" ""
+# Import init.krieg.rc file
+insert_line init.rc "init.krieg.rc" after "import /init.usb.rc" "import /init.krieg.rc";
+# Import spectrum.rc file
+insert_line init.rc "init.spectrum.rc" after "import /init.krieg.rc" "import /init.spectrum.rc";
 # end ramdisk changes
 write_boot;
 
